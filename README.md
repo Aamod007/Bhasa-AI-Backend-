@@ -1,19 +1,19 @@
 # Bhasa-AI Backend API
 
-Production-ready FastAPI translation service for deployment on Railway.
+Production-ready FastAPI translation service for deployment on Render.
 
 ## 🚀 Features
 
 - **Text Translation** - Translate text between 50+ languages
 - **Language Detection** - Automatically detect the language of input text
 - **Fast & Reliable** - Built with FastAPI for high performance
-- **Production Ready** - Optimized for Railway deployment
+- **Production Ready** - Optimized for Render deployment
 - **CORS Enabled** - Works seamlessly with Vercel frontend
 
 ## 📋 Prerequisites
 
 - Python 3.9 or higher
-- Railway account (for deployment)
+- Render account (for deployment)
 - Git
 
 ## 🛠️ Local Development
@@ -55,49 +55,33 @@ The API will be available at `http://localhost:8000`
 - **Alternative Docs**: http://localhost:8000/redoc
 - **Health Check**: http://localhost:8000/health
 
-## 🚂 Deploy to Railway
+## 🎨 Deploy to Render
 
-### Method 1: Deploy from GitHub (Recommended)
+For detailed Render deployment instructions, see [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md)
 
-1. **Create a new GitHub repository** for your backend
+### Quick Deploy to Render:
 
+1. **Push to GitHub**
    ```bash
-   git init
    git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin <your-backend-repo-url>
-   git push -u origin main
+   git commit -m "Add Render configuration"
+   git push origin main
    ```
 
-2. **Deploy on Railway**
-   - Go to [Railway](https://railway.app)
-   - Click "New Project"
-   - Select "Deploy from GitHub repo"
-   - Choose your backend repository
-   - Railway will automatically detect the configuration from `railway.toml`
+2. **Deploy on Render**
+   - Go to [Render Dashboard](https://dashboard.render.com/)
+   - Click "New +" → "Blueprint"
+   - Connect your repository
+   - Render will auto-detect `render.yaml`
+   - Click "Apply"
 
-3. **Configure Environment Variables** (Optional)
-   - Railway automatically provides `PORT` variable
-   - No additional environment variables needed
+3. **Get your Render URL**
+   - After deployment: `https://your-service.onrender.com`
+   - Use this URL in your frontend configuration
 
-4. **Get your Railway URL**
-   - After deployment, Railway will provide a URL like: `https://your-app.railway.app`
-   - Save this URL for frontend configuration
+📖 **See [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) for complete guide**
 
-### Method 2: Deploy using Railway CLI
 
-```bash
-# Install Railway CLI
-npm install -g @railway/cli
-
-# Login to Railway
-railway login
-
-# Initialize and deploy
-railway init
-railway up
-```
 
 ## 📡 API Endpoints
 
@@ -116,7 +100,7 @@ railway up
 ### Translate Text
 
 ```bash
-curl -X POST "https://your-app.railway.app/api/translate" \
+curl -X POST "https://your-service.onrender.com/api/translate" \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Hello, how are you?",
@@ -142,7 +126,7 @@ curl -X POST "https://your-app.railway.app/api/translate" \
 ### Detect Language
 
 ```bash
-curl -X POST "https://your-app.railway.app/api/detect-language" \
+curl -X POST "https://your-service.onrender.com/api/detect-language" \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Bonjour le monde"
@@ -161,12 +145,12 @@ curl -X POST "https://your-app.railway.app/api/detect-language" \
 ### Get Supported Languages
 
 ```bash
-curl "https://your-app.railway.app/api/supported-languages"
+curl "https://your-service.onrender.com/api/supported-languages"
 ```
 
 ## 🔗 Connect with Frontend
 
-After deploying to Railway, update your frontend environment variables:
+After deploying to Render, update your frontend environment variables:
 
 ### For Vercel Frontend:
 
@@ -174,7 +158,7 @@ After deploying to Railway, update your frontend environment variables:
 2. Navigate to "Environment Variables"
 3. Add/Update:
    ```
-   VITE_RAILWAY_API_URL=https://your-app.railway.app
+   VITE_API_URL=https://your-service.onrender.com
    ```
 4. Redeploy your frontend
 
@@ -182,7 +166,7 @@ After deploying to Railway, update your frontend environment variables:
 
 Create/Update `.env` file in your frontend project:
 ```env
-VITE_RAILWAY_API_URL=https://your-app.railway.app
+VITE_API_URL=https://your-service.onrender.com
 ```
 
 ## 🔧 Project Structure
