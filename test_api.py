@@ -1,11 +1,11 @@
 """
 Test script to verify the API is working correctly
-Run this locally before deploying to Railway
+Run this locally before deploying to production
 """
 import requests
 import json
 
-# Base URL - change this to your Railway URL after deployment
+# Base URL - change this to your Render URL after deployment
 BASE_URL = "http://localhost:8000"
 
 

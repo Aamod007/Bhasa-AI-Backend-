@@ -259,8 +259,8 @@ MIT License - Feel free to use this for your projects!
 
 ## 🎯 Next Steps
 
-1. ✅ Deploy backend to Railway
-2. ✅ Get your Railway URL
+1. ✅ Deploy backend to Render
+2. ✅ Get your Render URL
 3. ✅ Update frontend environment variables
 4. ✅ Test the integration
 5. 🚀 Go live!

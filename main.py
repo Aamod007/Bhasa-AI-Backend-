@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Bhasa-AI Translation API - Main Application
-FastAPI Backend for Railway Deployment
+FastAPI Backend for Production Deployment
 """
 import os
 import sys
@@ -22,15 +22,15 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="Bhasa-AI Translation API",
     version="1.0.0",
-    description="Production-ready translation API deployed on Railway",
+    description="Production-ready translation API for multilingual applications",
     docs_url="/docs",
     redoc_url="/redoc"
 )
 
-# Configure CORS for Railway deployment with Vercel frontend
+# Configure CORS for production deployment
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with your Vercel domain
+    allow_origins=["*"],  # In production, replace with your frontend domain
     allow_credentials=False,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
@@ -42,7 +42,7 @@ async def startup_event():
     """Initialize services on startup"""
     try:
         logger.info("Starting Bhasa-AI Translation API...")
-        logger.info(f"Environment: {os.environ.get('RAILWAY_ENVIRONMENT', 'development')}")
+        logger.info(f"Environment: {os.environ.get('RENDER', 'development')}")
         
         # Initialize translator
         translator = get_translator()
