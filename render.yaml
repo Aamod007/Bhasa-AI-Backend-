@@ -1,0 +1,16 @@
+services:
+  # Web service for the FastAPI backend
+  - type: web
+    name: bhasa-ai-backend
+    env: python
+    region: oregon  # Choose your preferred region
+    plan: free  # Change to 'starter' or 'standard' for production
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 10000
